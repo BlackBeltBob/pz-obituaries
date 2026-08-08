@@ -1,0 +1,57 @@
+{
+  "slug": "ozimandias",
+  "name": "Ozimandias",
+  "gameMode": "Apocalypse",
+  "startingLocation": "Rosewood",
+  "goals": [],
+  "memorableMoments": [
+    "awefawefawefaweffew"
+  ],
+  "traits": [
+    "Fast Reader",
+    "Slow Healer",
+    "Outdoorsy",
+    "Nutritionist",
+    "Claustrophobic",
+    "Prone to Illness",
+    "Thin-skinned",
+    "Sunday Driver",
+    "Stout"
+  ],
+  "images": [],
+  "pointsOfInterest": [
+    {
+      "name": "Kentucky Court of Justice",
+      "goals": [],
+      "notes": "",
+      "cleared": false,
+      "visited": false,
+      "looted": false
+    },
+    {
+      "name": "Gun store",
+      "goals": [],
+      "notes": "",
+      "visited": false,
+      "cleared": false,
+      "looted": false
+    },
+    {
+      "name": "Knox Bank",
+      "goals": [],
+      "notes": "",
+      "visited": false,
+      "cleared": false,
+      "looted": false
+    },
+    {
+      "name": "GigaMart",
+      "goals": [],
+      "notes": "Cleared Aisles ",
+      "visited": false,
+      "cleared": false,
+      "looted": false
+    }
+  ],
+  "status": "living"
+}

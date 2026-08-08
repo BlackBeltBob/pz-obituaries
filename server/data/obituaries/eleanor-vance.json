@@ -1,0 +1,53 @@
+{
+  "slug": "eleanor-vance",
+  "name": "Eleanor Vance",
+  "status": "deceased",
+  "gameMode": "Apocalypse",
+  "startingLocation": "Riverside",
+  "goals": [
+    {
+      "description": "Reach level 5 carpentry",
+      "achieved": true
+    },
+    {
+      "description": "Find and repair a helicopter (cosmetic base project)",
+      "achieved": false
+    },
+    {
+      "description": "Survive to see the first winter",
+      "achieved": true
+    }
+  ],
+  "memorableMoments": [
+    "Cleared the entire West Point gun store solo on day 6",
+    "Survived the first helicopter event by hiding in a car trunk... twice",
+    "Built a working rain-collection base on the roof of the fire station"
+  ],
+  "images": [],
+  "traits": [
+    "Fast Learner",
+    "Organized",
+    "Outdoorsman"
+  ],
+  "causeOfDeath": "Bled out after a botched leg-wound bandage during a horde escape in Riverside",
+  "runLength": {
+    "years": 0,
+    "months": 4,
+    "days": 12,
+    "hours": 7,
+    "minutes": 33
+  },
+  "restingPlaceScreenshot": "",
+  "favouriteWeapon": "Fire axe",
+  "weight": 71.4,
+  "pointsOfInterest": [
+    {
+      "name": "Pharmahug",
+      "goals": [],
+      "notes": "Cleared it out for antibiotics on day 3",
+      "visited": false,
+      "cleared": false,
+      "looted": false
+    }
+  ]
+}

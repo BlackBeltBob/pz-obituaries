@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#2e303a"/>
+  <path d="M140 260 V150 a60 60 0 0 1 120 0 V260 Z" fill="#4b4e5c" stroke="#6b6d7a" stroke-width="3"/>
+  <rect x="120" y="255" width="160" height="14" fill="#4b4e5c" stroke="#6b6d7a" stroke-width="3"/>
+  <text x="200" y="205" text-anchor="middle" font-family="serif" font-size="16" fill="#9ca3af">R.I.P.</text>
+  <text x="200" y="290" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6b6d7a">No screenshot yet</text>
+</svg>
