@@ -1,0 +1,29 @@
+{
+  "slug": "bobbie-fish",
+  "name": "Bobbie Fish",
+  "gameMode": "Apocalypse",
+  "startingLocation": "West Point",
+  "occupation": "Engineer",
+  "currentDay": null,
+  "goals": [
+    {
+      "description": "Survive for a month",
+      "achieved": false
+    },
+    {
+      "description": "Build a good base in the brick factory.",
+      "achieved": false,
+      "tag": "base"
+    }
+  ],
+  "memorableMoments": [
+    "On the first day, I got a double laceration but managed to sleep on the floor of a brick factory. It was tense, but I survived. There is a surviver house nearby with loads of books and recipes. Will loot soon.",
+    "On the second day, a gimp I was standing on managed to bite my leg. I had to enter god mode for a moment to solve the issue. I had spent the entire day looking for a hammer, and managed to pick up a full bed in one go. Yay for good sleep with a pillow!"
+  ],
+  "traits": [],
+  "skills": [],
+  "routines": [],
+  "images": [],
+  "pointsOfInterest": [],
+  "status": "living"
+}

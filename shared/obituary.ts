@@ -9,6 +9,27 @@ export interface RunDuration {
 export interface Goal {
   description: string
   achieved: boolean
+  tag?: string
+}
+
+export interface JournalEntry {
+  id: string
+  text: string
+  day: number | null
+  createdAt: string
+}
+
+export interface SkillEntry {
+  name: string
+  level: number
+}
+
+export interface Routine {
+  id: string
+  description: string
+  cadence: string
+  done: boolean
+  lastDoneDay: number | null
 }
 
 export type TraitCategory = 'positive' | 'negative'
@@ -56,7 +77,7 @@ export interface PointOfInterestEntry {
   cleared: boolean
   looted: boolean
   goals: Goal[]
-  notes: string
+  notes: JournalEntry[]
 }
 
 interface ObituaryBase {
@@ -64,10 +85,14 @@ interface ObituaryBase {
   name: string
   gameMode: string
   startingLocation: string
+  occupation: string
+  currentDay: number | null
   goals: Goal[]
   memorableMoments: string[]
   images: string[]
   traits: string[]
+  skills: SkillEntry[]
+  routines: Routine[]
   pointsOfInterest: PointOfInterestEntry[]
 }
 
@@ -90,6 +115,7 @@ export interface CreateObituaryInput {
   name: string
   gameMode: string
   startingLocation: string
+  occupation: string
   goals: Goal[]
   memorableMoments: string[]
   traits: string[]
@@ -100,6 +126,9 @@ export interface UpdateObituaryInput {
   memorableMoments: string[]
   traits: string[]
   pointsOfInterest: PointOfInterestEntry[]
+  skills: SkillEntry[]
+  routines: Routine[]
+  currentDay: number | null
 }
 
 export interface SubmitDeathInput {

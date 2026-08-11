@@ -74,3 +74,11 @@ export async function getTraitsCatalog(): Promise<TraitDefinition[]> {
 export async function getPoisCatalog(): Promise<Record<string, string[]>> {
   return parseOrThrow(await fetch('/api/pois'))
 }
+
+export async function getOccupationsCatalog(): Promise<string[]> {
+  return parseOrThrow(await fetch('/api/occupations'))
+}
+
+export async function getSkillsCatalog(): Promise<string[]> {
+  return parseOrThrow(await fetch('/api/skills'))
+}

@@ -23,7 +23,7 @@
     {
       "name": "Kentucky Court of Justice",
       "goals": [],
-      "notes": "",
+      "notes": [],
       "cleared": false,
       "visited": false,
       "looted": false
@@ -31,7 +31,7 @@
     {
       "name": "Gun store",
       "goals": [],
-      "notes": "",
+      "notes": [],
       "visited": false,
       "cleared": false,
       "looted": false
@@ -39,7 +39,7 @@
     {
       "name": "Knox Bank",
       "goals": [],
-      "notes": "",
+      "notes": [],
       "visited": false,
       "cleared": false,
       "looted": false
@@ -47,11 +47,41 @@
     {
       "name": "GigaMart",
       "goals": [],
-      "notes": "Cleared Aisles ",
+      "notes": [
+        {
+          "id": "legacy",
+          "text": "Cleared Aisles ",
+          "day": null,
+          "createdAt": "1970-01-01T00:00:00.000Z"
+        }
+      ],
       "visited": false,
       "cleared": false,
       "looted": false
     }
   ],
-  "status": "living"
+  "status": "deceased",
+  "occupation": "",
+  "currentDay": 89,
+  "skills": [],
+  "routines": [
+    {
+      "id": "87e5da21-c120-4b78-921c-576147e636bd",
+      "description": "Check on the chickuns",
+      "cadence": "weekly",
+      "done": false,
+      "lastDoneDay": null
+    }
+  ],
+  "causeOfDeath": "Bitten in the neck",
+  "runLength": {
+    "years": 0,
+    "months": 0,
+    "days": 22,
+    "hours": 23,
+    "minutes": 0
+  },
+  "restingPlaceScreenshot": "",
+  "favouriteWeapon": "Crowbar",
+  "weight": 85
 }

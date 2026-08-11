@@ -1,75 +1,72 @@
-# React + TypeScript + Vite
+# pz-obituaries
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A memorial gallery for Project Zomboid characters. Living characters can be
+edited freely (goals, traits, points of interest visited); when a character
+dies, a death form records the details and locks them onto a tombstone.
 
-Currently, two official plugins are available:
+Data is stored as plain JSON files under `server/data/` and uploaded photos
+under `public/obituaries/` — no database required.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Development
 
-## React Compiler
+Requires Node 22+.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This runs the Vite dev server (`:5173`) and the Express API (`:3001`)
+together, with `/api` proxied from the client to the server.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Other scripts:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `npm run lint` — ESLint
+- `npm run build` — type-check and build the frontend to `dist/`
 
+## Running in production
+
+`npm start` runs a single Express process that serves the built frontend,
+the API, and uploaded images all from one port (`3001` by default, override
+with `PORT`). Build first:
+
+```bash
+npm run build
+npm start
 ```
+
+### Docker / Synology NAS
+
+A `Dockerfile` and `docker-compose.yml` are included:
+
+```bash
+docker compose up -d --build
+```
+
+or without Compose:
+
+```bash
+docker build -t pz-obituaries .
+docker run -d \
+  --name pz-obituaries \
+  -p 3001:3001 \
+  -v pz-obituaries-data:/app/server/data \
+  -v pz-obituaries-photos:/app/public/obituaries \
+  pz-obituaries
+```
+
+The two volumes hold your character data and uploaded photos, so they
+survive rebuilding or updating the image. On first run they'll be seeded
+with whatever is baked into the image (the sample characters, unless
+you've replaced them).
+
+On a Synology NAS, either SSH in and run the `docker compose` command above
+from the project folder, or use **Container Manager**'s Project feature,
+which reads the same `docker-compose.yml` — point it at the project folder
+and it builds and starts it for you. Swap the named volumes for bind mounts
+to a Synology shared folder if you'd rather browse the JSON/photos directly
+from File Station.
+
+This app has no authentication. If you expose it beyond your LAN, put it
+behind a reverse proxy with auth (Synology's own reverse proxy, or
+something like Authelia/Tailscale) rather than port-forwarding it directly.

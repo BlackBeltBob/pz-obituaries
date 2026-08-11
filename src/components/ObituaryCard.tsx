@@ -10,6 +10,8 @@ interface ObituaryCardProps {
 
 export function ObituaryCard({ obituary }: ObituaryCardProps) {
   const thumbnail = obituary.status === 'deceased' ? obituary.restingPlaceScreenshot : obituary.images[0]
+  const achievedGoals = obituary.goals.filter((g) => g.achieved).length
+  const loggedPois = obituary.pointsOfInterest.filter((p) => p.visited || p.notes.length > 0).length
 
   return (
     <Link
@@ -39,6 +41,16 @@ export function ObituaryCard({ obituary }: ObituaryCardProps) {
           </>
         ) : (
           <p className="mt-1 text-sm text-emerald-400">Still surviving...</p>
+        )}
+        {(obituary.goals.length > 0 || loggedPois > 0) && (
+          <p className="mt-2 flex gap-3 text-xs text-slate-500">
+            {obituary.goals.length > 0 && (
+              <span>
+                ✓ {achievedGoals}/{obituary.goals.length} goals
+              </span>
+            )}
+            {loggedPois > 0 && <span>📍 {loggedPois} POIs logged</span>}
+          </p>
         )}
       </div>
     </Link>

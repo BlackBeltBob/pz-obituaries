@@ -1,0 +1,13 @@
+services:
+  pz-obituaries:
+    build: .
+    ports:
+      - "3001:3001"
+    volumes:
+      - pz-obituaries-data:/app/server/data
+      - pz-obituaries-photos:/app/public/obituaries
+    restart: unless-stopped
+
+volumes:
+  pz-obituaries-data:
+  pz-obituaries-photos:

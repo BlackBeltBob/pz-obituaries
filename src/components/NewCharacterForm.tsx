@@ -1,6 +1,7 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { GAME_MODES, STARTING_LOCATIONS, type Obituary } from '../../shared/obituary'
-import { createObituary } from '../lib/api'
+import { createObituary, getOccupationsCatalog } from '../lib/api'
+import { TraitPicker } from './TraitPicker'
 
 interface NewCharacterFormProps {
   onClose: () => void
@@ -11,8 +12,18 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
   const [name, setName] = useState('')
   const [gameMode, setGameMode] = useState<string>(GAME_MODES[0])
   const [startingLocation, setStartingLocation] = useState<string>('')
+  const [occupations, setOccupations] = useState<string[] | null>(null)
+  const [occupation, setOccupation] = useState<string>('')
+  const [traits, setTraits] = useState<string[]>([])
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    getOccupationsCatalog().then((catalog) => {
+      setOccupations(catalog)
+      setOccupation(catalog[0] ?? '')
+    })
+  }, [])
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -28,9 +39,10 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
         name: name.trim(),
         gameMode,
         startingLocation,
+        occupation,
         goals: [],
         memorableMoments: [],
-        traits: [],
+        traits,
       })
       onCreated(obituary)
     } catch (err) {
@@ -42,7 +54,7 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/60 p-4">
-      <div className="w-full max-w-sm rounded-lg border border-slate-700 bg-slate-900 p-5">
+      <div className="max-h-[90vh] w-full max-w-sm overflow-y-auto rounded-lg border border-slate-700 bg-slate-900 p-5">
         <h2 className="text-lg font-semibold text-slate-100">New Character</h2>
         <form onSubmit={handleSubmit} className="mt-4 space-y-3">
           <input
@@ -86,6 +98,26 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
                 </option>
               ))}
             </select>
+          </div>
+
+          <div>
+            <label className="text-sm text-slate-400">Occupation</label>
+            <select
+              value={occupation}
+              onChange={(e) => setOccupation(e.target.value)}
+              disabled={!occupations}
+              className="mt-1 w-full rounded border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100 disabled:opacity-50"
+            >
+              {(occupations ?? []).map((o) => (
+                <option key={o} value={o}>
+                  {o}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="rounded border border-slate-700 px-3 py-2">
+            <TraitPicker traits={traits} onChange={setTraits} />
           </div>
 
           {error && <p className="text-sm text-red-400">{error}</p>}

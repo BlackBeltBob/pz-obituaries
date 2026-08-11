@@ -26,9 +26,13 @@ router.post('/', async (req, res) => {
     name: input.name,
     gameMode: input.gameMode,
     startingLocation: input.startingLocation,
+    occupation: input.occupation,
+    currentDay: null,
     goals: input.goals,
     memorableMoments: input.memorableMoments,
     traits: input.traits,
+    skills: [],
+    routines: [],
     images: [],
     pointsOfInterest: [],
     status: 'living',
@@ -50,6 +54,9 @@ router.put('/:slug', async (req, res) => {
     memorableMoments: input.memorableMoments,
     traits: input.traits,
     pointsOfInterest: input.pointsOfInterest,
+    skills: input.skills,
+    routines: input.routines,
+    currentDay: input.currentDay,
   }
   await storage.save(updated)
   res.json(updated)
