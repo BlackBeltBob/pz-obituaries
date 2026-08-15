@@ -1,13 +1,14 @@
 services:
   pz-obituaries:
     build: .
+    image: pz-obituaries:latest
     ports:
       - "3001:3001"
     volumes:
-      - pz-obituaries-data:/app/server/data
-      - pz-obituaries-photos:/app/public/obituaries
+      # Bind mounts (not named volumes) to real directories outside this
+      # project folder, so the JSON/photos are directly browsable/editable
+      # via File Station or SSH, and are never touched by re-syncing this
+      # project folder on deploy (see scripts/deploy.sh).
+      - /volume1/docker/pz-obituaries-storage/data:/app/server/data
+      - /volume1/docker/pz-obituaries-storage/photos:/app/public/obituaries
     restart: unless-stopped
-
-volumes:
-  pz-obituaries-data:
-  pz-obituaries-photos:

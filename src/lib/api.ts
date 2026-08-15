@@ -1,6 +1,7 @@
 import type {
   CreateObituaryInput,
   Obituary,
+  PoiCatalogEntry,
   SubmitDeathInput,
   TraitDefinition,
   UpdateObituaryInput,
@@ -71,7 +72,7 @@ export async function getTraitsCatalog(): Promise<TraitDefinition[]> {
   return parseOrThrow(await fetch('/api/traits'))
 }
 
-export async function getPoisCatalog(): Promise<Record<string, string[]>> {
+export async function getPoisCatalog(): Promise<Record<string, PoiCatalogEntry[]>> {
   return parseOrThrow(await fetch('/api/pois'))
 }
 

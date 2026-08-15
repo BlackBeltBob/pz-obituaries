@@ -4,26 +4,167 @@
   "gameMode": "Apocalypse",
   "startingLocation": "West Point",
   "occupation": "Engineer",
-  "currentDay": null,
+  "currentDay": 9,
   "goals": [
     {
       "description": "Survive for a month",
       "achieved": false
     },
     {
+      "description": "Find a primary working vehicle",
+      "achieved": true,
+      "tag": "vehicle"
+    },
+    {
+      "description": "Survive the Helicopter",
+      "achieved": true,
+      "tag": "event"
+    },
+    {
       "description": "Build a good base in the brick factory.",
-      "achieved": false,
+      "achieved": true,
       "tag": "base"
     }
   ],
   "memorableMoments": [
     "On the first day, I got a double laceration but managed to sleep on the floor of a brick factory. It was tense, but I survived. There is a surviver house nearby with loads of books and recipes. Will loot soon.",
-    "On the second day, a gimp I was standing on managed to bite my leg. I had to enter god mode for a moment to solve the issue. I had spent the entire day looking for a hammer, and managed to pick up a full bed in one go. Yay for good sleep with a pillow!"
+    "On the second day, a gimp I was standing on managed to bite my leg. I had to enter god mode for a moment to solve the issue. I had spent the entire day looking for a hammer, and managed to pick up a full bed in one go. Yay for good sleep with a pillow!",
+    "I've managed to build up the beginnings of a good base. I am confident that I can survive this for at least a month.",
+    "I got a Rampage Medal from the Summary mod. Killed half a neighborhood, but managed to clear access to the school and the food market.",
+    "I have managed to build the beginnings of a good base. Lots of storage, but i still need to put up walls. I need clay for that. Kitchen is mostly installed, as is the bed, and a reading nook."
   ],
   "traits": [],
   "skills": [],
   "routines": [],
   "images": [],
-  "pointsOfInterest": [],
-  "status": "living"
+  "pointsOfInterest": [
+    {
+      "name": "GigaMart",
+      "goals": [],
+      "status": "overrun",
+      "pinned": true,
+      "notes": []
+    },
+    {
+      "name": "Dentistry Dr. R. B. Mat, DMD",
+      "goals": [],
+      "status": "unvisited",
+      "pinned": false,
+      "notes": []
+    },
+    {
+      "name": "Enigma Books",
+      "goals": [],
+      "status": "unvisited",
+      "pinned": false,
+      "notes": []
+    },
+    {
+      "name": "Mendy's Eatery",
+      "goals": [],
+      "status": "unvisited",
+      "pinned": false,
+      "notes": []
+    },
+    {
+      "name": "Hit Vids!",
+      "goals": [],
+      "status": "overrun",
+      "pinned": true,
+      "notes": []
+    },
+    {
+      "name": "Seahorse Coffee",
+      "goals": [],
+      "status": "unvisited",
+      "pinned": false,
+      "notes": []
+    },
+    {
+      "name": "Food Market",
+      "goals": [],
+      "status": "looted",
+      "pinned": true,
+      "notes": []
+    },
+    {
+      "name": "School",
+      "goals": [],
+      "status": "looted",
+      "pinned": true,
+      "notes": []
+    }
+  ],
+  "status": "living",
+  "bases": [
+    {
+      "id": "7ba155d4-23f0-4617-9a43-9f6631adc7ad",
+      "label": "West Point Brick Factory",
+      "x": 11267,
+      "y": 6924
+    }
+  ],
+  "selectedBaseId": "7ba155d4-23f0-4617-9a43-9f6631adc7ad",
+  "skillbooks": [
+    {
+      "name": "Carpentry",
+      "tiers": [
+        true,
+        true,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "name": "Electrical",
+      "tiers": [
+        false,
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "name": "Farming",
+      "tiers": [
+        false,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "name": "Trapping",
+      "tiers": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "Reloading",
+      "tiers": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "name": "Short Blade",
+      "tiers": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ]
+    }
+  ]
 }

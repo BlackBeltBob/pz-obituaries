@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import type { Obituary } from '../../shared/obituary'
 import { getObituaryBySlug, updateObituary, uploadImage } from '../lib/api'
 import { hasRealScreenshot } from '../lib/screenshot'
+import { BasesPicker } from './BasesPicker'
 import { DeathForm } from './DeathForm'
 import { DurationBadge } from './DurationBadge'
 import { EditableGoals } from './EditableGoals'
@@ -10,18 +11,20 @@ import { EditableMoments } from './EditableMoments'
 import { ImageGallery } from './ImageGallery'
 import { PointsOfInterestPicker } from './PointsOfInterestPicker'
 import { RoutinesList } from './RoutinesList'
+import { SkillbooksPicker } from './SkillbooksPicker'
 import { SkillsPicker } from './SkillsPicker'
 import { TombstonePlaceholder } from './TombstonePlaceholder'
 import { TraitPicker } from './TraitPicker'
 
-const TABS = ['overview', 'journal', 'goals', 'activities'] as const
+const TABS = ['overview', 'journal', 'goals', 'skills', 'routines'] as const
 type Tab = (typeof TABS)[number]
 
 const TAB_LABELS: Record<Tab, string> = {
   overview: 'Overview',
   journal: 'Journal',
   goals: 'Goals',
-  activities: 'Activities',
+  skills: 'Skills',
+  routines: 'Routines',
 }
 
 function CurrentDayControl({
@@ -97,7 +100,19 @@ export function ObituaryDetail() {
 
   async function persist(
     partial: Partial<
-      Pick<Obituary, 'goals' | 'memorableMoments' | 'traits' | 'pointsOfInterest' | 'skills' | 'routines' | 'currentDay'>
+      Pick<
+        Obituary,
+        | 'goals'
+        | 'memorableMoments'
+        | 'traits'
+        | 'pointsOfInterest'
+        | 'skills'
+        | 'skillbooks'
+        | 'routines'
+        | 'currentDay'
+        | 'bases'
+        | 'selectedBaseId'
+      >
     >,
   ) {
     const updated = await updateObituary(slug!, {
@@ -106,8 +121,11 @@ export function ObituaryDetail() {
       traits: partial.traits ?? obituary!.traits,
       pointsOfInterest: partial.pointsOfInterest ?? obituary!.pointsOfInterest,
       skills: partial.skills ?? obituary!.skills,
+      skillbooks: partial.skillbooks ?? obituary!.skillbooks,
       routines: partial.routines ?? obituary!.routines,
       currentDay: 'currentDay' in partial ? partial.currentDay! : obituary!.currentDay,
+      bases: partial.bases ?? obituary!.bases,
+      selectedBaseId: 'selectedBaseId' in partial ? partial.selectedBaseId! : obituary!.selectedBaseId,
     })
     setObituary(updated)
   }
@@ -198,6 +216,11 @@ export function ObituaryDetail() {
             )}
             <ImageGallery images={obituary.images} onUpload={handleUpload} />
             <TraitPicker traits={obituary.traits} onChange={(traits) => persist({ traits })} />
+            <BasesPicker
+              bases={obituary.bases}
+              selectedBaseId={obituary.selectedBaseId}
+              onChange={(update) => persist(update)}
+            />
           </div>
         )}
 
@@ -218,15 +241,22 @@ export function ObituaryDetail() {
 
         {tab === 'goals' && <EditableGoals goals={obituary.goals} onChange={(goals) => persist({ goals })} />}
 
-        {tab === 'activities' && (
+        {tab === 'skills' && (
           <div className="space-y-6">
             <SkillsPicker skills={obituary.skills} onChange={(skills) => persist({ skills })} />
-            <RoutinesList
-              routines={obituary.routines}
-              currentDay={obituary.currentDay}
-              onChange={(routines) => persist({ routines })}
+            <SkillbooksPicker
+              skillbooks={obituary.skillbooks}
+              onChange={(skillbooks) => persist({ skillbooks })}
             />
           </div>
+        )}
+
+        {tab === 'routines' && (
+          <RoutinesList
+            routines={obituary.routines}
+            currentDay={obituary.currentDay}
+            onChange={(routines) => persist({ routines })}
+          />
         )}
       </div>
 

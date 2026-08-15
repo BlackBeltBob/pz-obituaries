@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { Router } from 'express'
 
-const SKILLS_FILE = path.resolve(import.meta.dirname, '../data/skills.json')
+const SKILLS_FILE = path.resolve(import.meta.dirname, '../catalog/skills.json')
 
 const router = Router()
 

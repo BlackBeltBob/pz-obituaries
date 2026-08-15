@@ -1,4 +1,5 @@
 
+import fs from 'node:fs'
 import path from 'node:path'
 import cors from 'cors'
 import express from 'express'
@@ -7,6 +8,10 @@ import occupationsRouter from './routes/occupations'
 import poisRouter from './routes/pois'
 import skillsRouter from './routes/skills'
 import traitsRouter from './routes/traits'
+
+const { version } = JSON.parse(
+  fs.readFileSync(path.resolve(import.meta.dirname, '../package.json'), 'utf-8'),
+) as { version: string }
 
 const app = express()
 const PORT = Number(process.env.PORT) || 3001
@@ -40,5 +45,5 @@ if (isProduction) {
 }
 
 app.listen(PORT, () => {
-  console.log(`Server listening on http://localhost:${PORT}`)
+  console.log(`pz-obituaries v${version} listening on http://localhost:${PORT}`)
 })

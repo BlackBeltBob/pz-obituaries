@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import type { JournalEntry, Obituary } from '../shared/obituary'
+import type { JournalEntry, Obituary, PoiStatus } from '../shared/obituary'
 
 const DATA_DIR = path.resolve(import.meta.dirname, 'data/obituaries')
 
@@ -22,6 +22,22 @@ function normalizeNotes(notes: unknown): JournalEntry[] {
   return []
 }
 
+// A POI's visited/cleared/looted independent flags were replaced by a single
+// exclusive `status` following the unvisited -> overrun -> cleared -> looted
+// progression. Fold the old flags into the furthest state they imply.
+function normalizeStatus(poi: {
+  status?: PoiStatus
+  looted?: boolean
+  cleared?: boolean
+  visited?: boolean
+}): PoiStatus {
+  if (poi.status) return poi.status
+  if (poi.looted) return 'looted'
+  if (poi.cleared) return 'cleared'
+  if (poi.visited) return 'overrun'
+  return 'unvisited'
+}
+
 // Old character files predate fields like `traits`, `gameMode`,
 // `startingLocation`, `occupation`, `currentDay`, `skills`, `routines`, and
 // the visited/cleared/looted flags on a POI entry; default them in rather
@@ -36,12 +52,15 @@ function normalize(raw: unknown): Obituary {
     occupation: obituary.occupation ?? '',
     currentDay: obituary.currentDay ?? null,
     skills: obituary.skills ?? [],
+    skillbooks: obituary.skillbooks ?? [],
     routines: obituary.routines ?? [],
+    bases: obituary.bases ?? [],
+    selectedBaseId: obituary.selectedBaseId ?? null,
     pointsOfInterest: (obituary.pointsOfInterest ?? []).map((poi) => ({
-      ...poi,
-      visited: poi.visited ?? false,
-      cleared: poi.cleared ?? false,
-      looted: poi.looted ?? false,
+      name: poi.name,
+      goals: poi.goals ?? [],
+      status: normalizeStatus(poi),
+      pinned: poi.pinned ?? false,
       notes: normalizeNotes(poi.notes),
     })),
   }

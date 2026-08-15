@@ -1,0 +1,812 @@
+{
+  "Muldraugh": [
+    {
+      "name": "Muldraugh Police Department",
+      "category": "utilities"
+    },
+    {
+      "name": "Cortman Medical",
+      "category": "medical"
+    },
+    {
+      "name": "McCoy Logging Co.",
+      "category": "other"
+    },
+    {
+      "name": "Holy Grace Church",
+      "category": "other"
+    },
+    {
+      "name": "First Baptist Chapel",
+      "category": "other"
+    },
+    {
+      "name": "Muldraugh Elementary",
+      "category": "utilities"
+    },
+    {
+      "name": "Adult Education Center",
+      "category": "other"
+    },
+    {
+      "name": "Spiffo's",
+      "category": "foods"
+    },
+    {
+      "name": "Smokey's Saloon & Restaurant",
+      "category": "foods"
+    },
+    {
+      "name": "The Rusty Rifle",
+      "category": "firearms"
+    },
+    {
+      "name": "Sunstar Motel",
+      "category": "other"
+    },
+    {
+      "name": "Waites Motel",
+      "category": "other"
+    },
+    {
+      "name": "Knox Bank",
+      "category": "other"
+    },
+    {
+      "name": "Mass-Genfac Co.",
+      "category": "warehouse"
+    },
+    {
+      "name": "L&B Warehousing",
+      "category": "warehouse"
+    },
+    {
+      "name": "Railyard",
+      "category": "warehouse"
+    },
+    {
+      "name": "Train station",
+      "category": "other"
+    },
+    {
+      "name": "Junkyard",
+      "category": "mechanics"
+    },
+    {
+      "name": "Soup kitchen",
+      "category": "foods"
+    },
+    {
+      "name": "Tattoo 42",
+      "category": "other"
+    },
+    {
+      "name": "Acorn Plaza",
+      "category": "other"
+    },
+    {
+      "name": "Zippee Market",
+      "category": "foods"
+    },
+    {
+      "name": "Food Market",
+      "category": "foods"
+    },
+    {
+      "name": "Greene's",
+      "category": "foods"
+    },
+    {
+      "name": "Hit Vids!",
+      "category": "other"
+    }
+  ],
+  "Riverside": [
+    {
+      "name": "Pharmahug",
+      "category": "medical"
+    },
+    {
+      "name": "Enigma Books",
+      "category": "other"
+    },
+    {
+      "name": "Nails & Nuts",
+      "category": "other"
+    },
+    {
+      "name": "Time 4 Sport",
+      "category": "other"
+    },
+    {
+      "name": "GigaMart",
+      "category": "foods"
+    },
+    {
+      "name": "Police station",
+      "category": "utilities"
+    },
+    {
+      "name": "Fire department",
+      "category": "utilities"
+    },
+    {
+      "name": "Lighthouse",
+      "category": "other"
+    },
+    {
+      "name": "Riverside Ranger Station",
+      "category": "other"
+    },
+    {
+      "name": "U.S. Mail Service",
+      "category": "utilities"
+    },
+    {
+      "name": "West Maple Country Club",
+      "category": "other"
+    },
+    {
+      "name": "Griffin's Blacksmith Shop",
+      "category": "other"
+    },
+    {
+      "name": "Al's Auto Shop",
+      "category": "mechanics"
+    },
+    {
+      "name": "Riverside Scrap Inc.",
+      "category": "mechanics"
+    },
+    {
+      "name": "Lectromax Manufacturing",
+      "category": "warehouse"
+    },
+    {
+      "name": "C.G.E. Corp",
+      "category": "warehouse"
+    },
+    {
+      "name": "Body Chisel Gym & Fitness",
+      "category": "other"
+    },
+    {
+      "name": "Game Zone",
+      "category": "other"
+    },
+    {
+      "name": "Theatre Felix",
+      "category": "other"
+    },
+    {
+      "name": "Harbor Steakhouse",
+      "category": "foods"
+    },
+    {
+      "name": "Spiffo's",
+      "category": "foods"
+    },
+    {
+      "name": "Riverwood Boat Club",
+      "category": "other"
+    },
+    {
+      "name": "Hit Vids!",
+      "category": "other"
+    }
+  ],
+  "Rosewood": [
+    {
+      "name": "Kentucky Court of Justice",
+      "category": "other"
+    },
+    {
+      "name": "Rosewood Fire Department",
+      "category": "utilities"
+    },
+    {
+      "name": "Police station",
+      "category": "utilities"
+    },
+    {
+      "name": "Kentucky State Prison",
+      "category": "other"
+    },
+    {
+      "name": "Military Research Facility",
+      "category": "other"
+    },
+    {
+      "name": "Rosewood Senior Living",
+      "category": "other"
+    },
+    {
+      "name": "Book Naked",
+      "category": "other"
+    },
+    {
+      "name": "GigaMart",
+      "category": "foods"
+    },
+    {
+      "name": "Knox Bank",
+      "category": "other"
+    },
+    {
+      "name": "Bolt Claim",
+      "category": "other"
+    },
+    {
+      "name": "Melo's Records",
+      "category": "other"
+    },
+    {
+      "name": "Bouquets by Tinka",
+      "category": "other"
+    },
+    {
+      "name": "\"Seams\" Possible!",
+      "category": "other"
+    },
+    {
+      "name": "Gun store",
+      "category": "firearms"
+    },
+    {
+      "name": "J. Quire's Music School",
+      "category": "utilities"
+    },
+    {
+      "name": "Waltz In Dance School",
+      "category": "utilities"
+    },
+    {
+      "name": "Funeral chapel",
+      "category": "other"
+    },
+    {
+      "name": "Rosewood Elementary",
+      "category": "utilities"
+    },
+    {
+      "name": "Daycare",
+      "category": "other"
+    }
+  ],
+  "West Point": [
+    {
+      "name": "West Point Town Hall",
+      "category": "other"
+    },
+    {
+      "name": "Police station",
+      "category": "utilities"
+    },
+    {
+      "name": "Stendo's Firearms Emporium",
+      "category": "firearms"
+    },
+    {
+      "name": "West Point DIY",
+      "category": "other"
+    },
+    {
+      "name": "Enigma Books",
+      "category": "other"
+    },
+    {
+      "name": "GigaMart",
+      "category": "foods"
+    },
+    {
+      "name": "Knox Bank",
+      "category": "other"
+    },
+    {
+      "name": "American Tire",
+      "category": "mechanics"
+    },
+    {
+      "name": "Car Fix-ation",
+      "category": "mechanics"
+    },
+    {
+      "name": "Twiggy's",
+      "category": "foods"
+    },
+    {
+      "name": "The Drake",
+      "category": "other"
+    },
+    {
+      "name": "Seahorse Coffee",
+      "category": "foods"
+    },
+    {
+      "name": "Mendy's Eatery",
+      "category": "foods"
+    },
+    {
+      "name": "Diner in the Woods",
+      "category": "foods"
+    },
+    {
+      "name": "Pharmahug",
+      "category": "medical"
+    },
+    {
+      "name": "Dentistry Dr. R. B. Mat, DMD",
+      "category": "medical"
+    },
+    {
+      "name": "Post office",
+      "category": "utilities"
+    },
+    {
+      "name": "Daycare",
+      "category": "other"
+    },
+    {
+      "name": "School",
+      "category": "utilities"
+    },
+    {
+      "name": "Food Market",
+      "category": "foods"
+    },
+    {
+      "name": "Snacks N Stuff",
+      "category": "foods"
+    },
+    {
+      "name": "Hit Vids!",
+      "category": "other"
+    },
+    {
+      "name": "Pizza Whirled",
+      "category": "foods"
+    },
+    {
+      "name": "Zippee Mart",
+      "category": "foods"
+    }
+  ],
+  "Brandenburg": [
+    {
+      "name": "Brandenburg Fire Department",
+      "category": "utilities"
+    },
+    {
+      "name": "Brandenburg Detention Center",
+      "category": "other"
+    },
+    {
+      "name": "Brandenburg Judicial Court",
+      "category": "other"
+    },
+    {
+      "name": "Military blockade",
+      "category": "other"
+    },
+    {
+      "name": "P.S. Delilah",
+      "category": "other"
+    },
+    {
+      "name": "Memento Ammori",
+      "category": "firearms"
+    },
+    {
+      "name": "Pondview Shopping Center",
+      "category": "other"
+    },
+    {
+      "name": "Golden Sunset Nursing Home",
+      "category": "other"
+    },
+    {
+      "name": "Brandenburg Community Center",
+      "category": "other"
+    },
+    {
+      "name": "Brandenburg Airfield",
+      "category": "other"
+    },
+    {
+      "name": "Sammie's",
+      "category": "foods"
+    },
+    {
+      "name": "Knox Bank",
+      "category": "other"
+    },
+    {
+      "name": "Book Naked",
+      "category": "other"
+    },
+    {
+      "name": "Painful Tooth",
+      "category": "medical"
+    },
+    {
+      "name": "Five Alarm Firehouse Chili",
+      "category": "foods"
+    },
+    {
+      "name": "Outside Notes",
+      "category": "other"
+    },
+    {
+      "name": "Sunderland Hills Sanatorium",
+      "category": "medical"
+    },
+    {
+      "name": "Brenford's Quill Manor",
+      "category": "other"
+    },
+    {
+      "name": "Maj. Saunders Middle School",
+      "category": "utilities"
+    },
+    {
+      "name": "Bruno's Used Cars",
+      "category": "mechanics"
+    }
+  ],
+  "Echo Creek": [
+    {
+      "name": "First Cross Baptist Church",
+      "category": "other"
+    },
+    {
+      "name": "The Caban Center For Wildlife Rehabilitation",
+      "category": "other"
+    },
+    {
+      "name": "Ovo Farms",
+      "category": "foods"
+    },
+    {
+      "name": "Speedy GO",
+      "category": "utilities"
+    },
+    {
+      "name": "Guns Unlimited",
+      "category": "firearms"
+    },
+    {
+      "name": "Blair's Potted Paradise",
+      "category": "other"
+    },
+    {
+      "name": "Diner",
+      "category": "foods"
+    },
+    {
+      "name": "Wrecking yard",
+      "category": "mechanics"
+    }
+  ],
+  "Ekron": [
+    {
+      "name": "Ekron Community College",
+      "category": "utilities"
+    },
+    {
+      "name": "Ekron Fire Department",
+      "category": "utilities"
+    },
+    {
+      "name": "Barrel o' Gun",
+      "category": "firearms"
+    },
+    {
+      "name": "Bookman's Holiday",
+      "category": "other"
+    },
+    {
+      "name": "Home Sweet Gnome",
+      "category": "furniture"
+    },
+    {
+      "name": "E-Z Go Banking",
+      "category": "other"
+    },
+    {
+      "name": "Circuital Healing Computer Repair",
+      "category": "other"
+    },
+    {
+      "name": "Blue & White Bar",
+      "category": "foods"
+    },
+    {
+      "name": "The Cosy Crockpot",
+      "category": "foods"
+    },
+    {
+      "name": "Pharmahug",
+      "category": "medical"
+    },
+    {
+      "name": "Family Medical Center",
+      "category": "medical"
+    },
+    {
+      "name": "AMZ Steel",
+      "category": "warehouse"
+    },
+    {
+      "name": "U.S. Mail Service",
+      "category": "utilities"
+    },
+    {
+      "name": "Beer & Liquor",
+      "category": "foods"
+    },
+    {
+      "name": "Church",
+      "category": "other"
+    }
+  ],
+  "Fallas Lake": [
+    {
+      "name": "Fallas Lake Church",
+      "category": "other"
+    },
+    {
+      "name": "Police station",
+      "category": "utilities"
+    },
+    {
+      "name": "Town hall",
+      "category": "other"
+    },
+    {
+      "name": "E.P. Tools",
+      "category": "other"
+    },
+    {
+      "name": "Farming & Rural Supply",
+      "category": "other"
+    },
+    {
+      "name": "The Good Book",
+      "category": "other"
+    },
+    {
+      "name": "Thunder Gas",
+      "category": "utilities"
+    },
+    {
+      "name": "The Horseshoe",
+      "category": "foods"
+    },
+    {
+      "name": "Medical clinic",
+      "category": "medical"
+    }
+  ],
+  "Irvington": [
+    {
+      "name": "Irvington Speedway",
+      "category": "other"
+    },
+    {
+      "name": "Well Regulated Militia Gear & Supply",
+      "category": "firearms"
+    },
+    {
+      "name": "The Wizard's Keep",
+      "category": "other"
+    },
+    {
+      "name": "Irvington Gun Club",
+      "category": "firearms"
+    },
+    {
+      "name": "Irvington Fire Department",
+      "category": "utilities"
+    },
+    {
+      "name": "Irvington Town Hall",
+      "category": "other"
+    },
+    {
+      "name": "Irvington First Chapel",
+      "category": "other"
+    },
+    {
+      "name": "Irvington Public Pool",
+      "category": "other"
+    },
+    {
+      "name": "Beef Chunk Jerky Co.",
+      "category": "foods"
+    },
+    {
+      "name": "Brott Cattle Farm",
+      "category": "foods"
+    },
+    {
+      "name": "Mass-Genfac Co.",
+      "category": "warehouse"
+    },
+    {
+      "name": "Metalhead Tool Shop",
+      "category": "other"
+    },
+    {
+      "name": "Stuart & Log",
+      "category": "other"
+    },
+    {
+      "name": "Dia de los Tacos",
+      "category": "foods"
+    },
+    {
+      "name": "Ol' Rodney's Countrytime Steakhouse",
+      "category": "foods"
+    },
+    {
+      "name": "Mr. Sunshine Diner",
+      "category": "foods"
+    },
+    {
+      "name": "The Bulls Stool",
+      "category": "foods"
+    },
+    {
+      "name": "Pleasant Motel",
+      "category": "other"
+    },
+    {
+      "name": "Pharmahug",
+      "category": "medical"
+    },
+    {
+      "name": "Knox Bank",
+      "category": "other"
+    }
+  ],
+  "March Ridge": [
+    {
+      "name": "Knox Military Apartments",
+      "category": "other"
+    },
+    {
+      "name": "March Ridge Community Center",
+      "category": "other"
+    },
+    {
+      "name": "March Ridge School",
+      "category": "utilities"
+    },
+    {
+      "name": "Post office",
+      "category": "utilities"
+    },
+    {
+      "name": "Nourish Food Mart",
+      "category": "foods"
+    },
+    {
+      "name": "Star-E-Plex",
+      "category": "other"
+    },
+    {
+      "name": "Cold War bunker",
+      "category": "other"
+    },
+    {
+      "name": "Family Medical Center",
+      "category": "medical"
+    },
+    {
+      "name": "Pharmahug",
+      "category": "medical"
+    },
+    {
+      "name": "ABCDriving School",
+      "category": "utilities"
+    },
+    {
+      "name": "Church",
+      "category": "other"
+    },
+    {
+      "name": "Superklean",
+      "category": "other"
+    },
+    {
+      "name": "24-Hour Essentials",
+      "category": "other"
+    },
+    {
+      "name": "Seahorse Coffee",
+      "category": "foods"
+    },
+    {
+      "name": "Go 2 Bread",
+      "category": "foods"
+    },
+    {
+      "name": "Hit Vids!",
+      "category": "other"
+    }
+  ],
+  "Valley Station": [
+    {
+      "name": "Crossroads Mall",
+      "category": "other"
+    },
+    {
+      "name": "Star-E-Plex",
+      "category": "other"
+    },
+    {
+      "name": "Knob Creek Hunting Lodge",
+      "category": "firearms"
+    },
+    {
+      "name": "Shooting range",
+      "category": "firearms"
+    },
+    {
+      "name": "The Straight Shooter",
+      "category": "firearms"
+    },
+    {
+      "name": "Guns-a-BlazInn",
+      "category": "firearms"
+    },
+    {
+      "name": "Pole Position",
+      "category": "other"
+    },
+    {
+      "name": "Drag Racing",
+      "category": "other"
+    },
+    {
+      "name": "Camp Fitzgerald",
+      "category": "other"
+    },
+    {
+      "name": "Eternal Light Chapel",
+      "category": "other"
+    },
+    {
+      "name": "Sacred Flame Church",
+      "category": "other"
+    },
+    {
+      "name": "J. Tinsley Elementary School",
+      "category": "utilities"
+    },
+    {
+      "name": "Fun-2-3 Childcare",
+      "category": "other"
+    },
+    {
+      "name": "Worm of Books",
+      "category": "other"
+    },
+    {
+      "name": "Knox Bank",
+      "category": "other"
+    },
+    {
+      "name": "Morris' Bait Shop",
+      "category": "other"
+    },
+    {
+      "name": "Pharmahug",
+      "category": "medical"
+    },
+    {
+      "name": "Optima Eyes",
+      "category": "medical"
+    }
+  ]
+}

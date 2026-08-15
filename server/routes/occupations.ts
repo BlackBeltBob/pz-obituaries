@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { Router } from 'express'
 
-const OCCUPATIONS_FILE = path.resolve(import.meta.dirname, '../data/occupations.json')
+const OCCUPATIONS_FILE = path.resolve(import.meta.dirname, '../catalog/occupations.json')
 
 const router = Router()
 

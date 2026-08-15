@@ -11,7 +11,7 @@ interface ObituaryCardProps {
 export function ObituaryCard({ obituary }: ObituaryCardProps) {
   const thumbnail = obituary.status === 'deceased' ? obituary.restingPlaceScreenshot : obituary.images[0]
   const achievedGoals = obituary.goals.filter((g) => g.achieved).length
-  const loggedPois = obituary.pointsOfInterest.filter((p) => p.visited || p.notes.length > 0).length
+  const loggedPois = obituary.pointsOfInterest.filter((p) => p.status !== 'unvisited' || p.notes.length > 0).length
 
   return (
     <Link

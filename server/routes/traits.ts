@@ -3,7 +3,7 @@ import path from 'node:path'
 import { Router } from 'express'
 import type { TraitDefinition } from '../../shared/obituary'
 
-const TRAITS_FILE = path.resolve(import.meta.dirname, '../data/traits.json')
+const TRAITS_FILE = path.resolve(import.meta.dirname, '../catalog/traits.json')
 
 const router = Router()
 
