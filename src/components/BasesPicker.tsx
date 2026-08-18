@@ -51,10 +51,10 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
 
   return (
     <div>
-      <h2 className="text-lg font-semibold text-slate-100">Bases</h2>
+      <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Bases</h2>
 
       {selected && (
-        <div className="mt-2 overflow-hidden rounded border border-slate-800">
+        <div className="mt-2 overflow-hidden rounded border border-slate-200 dark:border-slate-800">
           <iframe
             key={selected.id}
             src={mapUrl(selected)}
@@ -67,7 +67,10 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
 
       <ul className="mt-2 space-y-1">
         {bases.map((base, index) => (
-          <li key={base.id} className="flex items-center gap-2 rounded border border-slate-800 px-2 py-1.5">
+          <li
+            key={base.id}
+            className="flex items-center gap-2 rounded border border-slate-200 px-2 py-1.5 dark:border-slate-800"
+          >
             <input
               type="radio"
               name="selected-base"
@@ -76,7 +79,7 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
               aria-label={`Preview ${base.label}`}
               className="h-4 w-4 shrink-0 accent-emerald-600"
             />
-            <span className="flex-1 text-sm text-slate-200">{base.label}</span>
+            <span className="flex-1 text-sm text-slate-600 dark:text-slate-200">{base.label}</span>
             <span className="shrink-0 text-xs text-slate-500">
               {base.x}, {base.y}
             </span>
@@ -84,7 +87,7 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
               href={mapUrl(base)}
               target="_blank"
               rel="noopener noreferrer"
-              className="shrink-0 text-xs text-emerald-400 hover:underline"
+              className="shrink-0 text-xs text-emerald-600 hover:underline dark:text-emerald-400"
             >
               View on map
             </a>
@@ -94,7 +97,7 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
                 onClick={() => moveBase(index, -1)}
                 disabled={index === 0}
                 aria-label="Move up"
-                className="text-xs text-slate-500 hover:text-slate-300 disabled:opacity-30"
+                className="text-xs text-slate-500 hover:text-slate-800 disabled:opacity-30 dark:hover:text-slate-300"
               >
                 ↑
               </button>
@@ -103,14 +106,14 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
                 onClick={() => moveBase(index, 1)}
                 disabled={index === bases.length - 1}
                 aria-label="Move down"
-                className="text-xs text-slate-500 hover:text-slate-300 disabled:opacity-30"
+                className="text-xs text-slate-500 hover:text-slate-800 disabled:opacity-30 dark:hover:text-slate-300"
               >
                 ↓
               </button>
               <button
                 type="button"
                 onClick={() => removeBase(base.id)}
-                className="text-xs text-slate-500 hover:text-red-400"
+                className="text-xs text-slate-500 hover:text-red-600 dark:hover:text-red-400"
                 aria-label="Remove base"
               >
                 ✕
@@ -127,7 +130,7 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
           onChange={(e) => setLabel(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && addBase()}
           placeholder="Base name..."
-          className="flex-1 rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-200"
+          className="flex-1 rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
         />
         <input
           type="number"
@@ -135,7 +138,7 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
           onChange={(e) => setX(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && addBase()}
           placeholder="X"
-          className="w-20 rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-200"
+          className="w-20 rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
         />
         <input
           type="number"
@@ -143,12 +146,12 @@ export function BasesPicker({ bases, selectedBaseId, onChange }: BasesPickerProp
           onChange={(e) => setY(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && addBase()}
           placeholder="Y"
-          className="w-20 rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-200"
+          className="w-20 rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
         />
         <button
           type="button"
           onClick={addBase}
-          className="rounded bg-slate-700 px-3 py-1 text-sm text-slate-200 hover:bg-slate-600"
+          className="rounded bg-slate-200 px-3 py-1 text-sm text-slate-800 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
         >
           Add
         </button>

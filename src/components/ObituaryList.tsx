@@ -13,7 +13,7 @@ export function ObituaryList() {
   }, [])
 
   if (!obituaries) {
-    return <p className="p-8 text-center text-slate-400">Loading...</p>
+    return <p className="p-8 text-center text-slate-500 dark:text-slate-400">Loading...</p>
   }
 
   const living = obituaries.filter((o) => o.status === 'living')
@@ -22,7 +22,7 @@ export function ObituaryList() {
   return (
     <div className="mx-auto max-w-5xl p-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-slate-100">pz-obituaries</h1>
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-slate-100">pz-obituaries</h1>
         <button
           type="button"
           onClick={() => setShowNewForm(true)}
@@ -33,7 +33,7 @@ export function ObituaryList() {
       </div>
 
       <section className="mt-8">
-        <h2 className="text-xl font-semibold text-slate-200">Still Kicking</h2>
+        <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-200">Still Kicking</h2>
         {living.length === 0 ? (
           <p className="mt-2 text-slate-500">No one's alive right now.</p>
         ) : (
@@ -46,7 +46,7 @@ export function ObituaryList() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-semibold text-slate-200">Hall of the Fallen</h2>
+        <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-200">Hall of the Fallen</h2>
         {deceased.length === 0 ? (
           <p className="mt-2 text-slate-500">No one's died yet. Give it time.</p>
         ) : (

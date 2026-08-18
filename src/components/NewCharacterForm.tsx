@@ -54,8 +54,8 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/60 p-4">
-      <div className="max-h-[90vh] w-full max-w-sm overflow-y-auto rounded-lg border border-slate-700 bg-slate-900 p-5">
-        <h2 className="text-lg font-semibold text-slate-100">New Character</h2>
+      <div className="max-h-[90vh] w-full max-w-sm overflow-y-auto rounded-lg border border-slate-300 bg-white p-5 dark:border-slate-700 dark:bg-slate-900">
+        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">New Character</h2>
         <form onSubmit={handleSubmit} className="mt-4 space-y-3">
           <input
             autoFocus
@@ -63,15 +63,15 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Character name"
-            className="w-full rounded border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100"
+            className="w-full rounded border border-slate-300 bg-white px-3 py-2 text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
 
           <div>
-            <label className="text-sm text-slate-400">Game mode</label>
+            <label className="text-sm text-slate-500 dark:text-slate-400">Game mode</label>
             <select
               value={gameMode}
               onChange={(e) => setGameMode(e.target.value)}
-              className="mt-1 w-full rounded border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100"
+              className="mt-1 w-full rounded border border-slate-300 bg-white px-3 py-2 text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             >
               {GAME_MODES.map((mode) => (
                 <option key={mode} value={mode}>
@@ -82,12 +82,12 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
           </div>
 
           <div>
-            <label className="text-sm text-slate-400">Starting location *</label>
+            <label className="text-sm text-slate-500 dark:text-slate-400">Starting location *</label>
             <select
               required
               value={startingLocation}
               onChange={(e) => setStartingLocation(e.target.value)}
-              className="mt-1 w-full rounded border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100"
+              className="mt-1 w-full rounded border border-slate-300 bg-white px-3 py-2 text-slate-900 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             >
               <option value="" disabled>
                 Select a location...
@@ -101,12 +101,12 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
           </div>
 
           <div>
-            <label className="text-sm text-slate-400">Occupation</label>
+            <label className="text-sm text-slate-500 dark:text-slate-400">Occupation</label>
             <select
               value={occupation}
               onChange={(e) => setOccupation(e.target.value)}
               disabled={!occupations}
-              className="mt-1 w-full rounded border border-slate-700 bg-slate-800 px-3 py-2 text-slate-100 disabled:opacity-50"
+              className="mt-1 w-full rounded border border-slate-300 bg-white px-3 py-2 text-slate-900 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
             >
               {(occupations ?? []).map((o) => (
                 <option key={o} value={o}>
@@ -116,16 +116,16 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
             </select>
           </div>
 
-          <div className="rounded border border-slate-700 px-3 py-2">
+          <div className="rounded border border-slate-300 px-3 py-2 dark:border-slate-700">
             <TraitPicker traits={traits} onChange={setTraits} />
           </div>
 
-          {error && <p className="text-sm text-red-400">{error}</p>}
+          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
           <div className="flex justify-end gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="rounded px-3 py-1.5 text-sm text-slate-400 hover:text-slate-200"
+              className="rounded px-3 py-1.5 text-sm text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"
             >
               Cancel
             </button>

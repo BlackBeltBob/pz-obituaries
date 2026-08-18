@@ -1,0 +1,14 @@
+[
+  { "name": "Crowbar", "iconUrl": "https://pzwiki.net/w/images/c/c0/Crowbar.png" },
+  { "name": "Sledgehammer", "iconUrl": "https://pzwiki.net/w/images/a/a1/Sledgehamer.png" },
+  { "name": "Mason's Trowel", "iconUrl": "https://pzwiki.net/w/images/a/a8/MasonTrowel.png" },
+  { "name": "Mason's Chisel", "iconUrl": "https://pzwiki.net/w/images/4/4c/Chisel_Forged.png" },
+  { "name": "Fleshing Tool", "iconUrl": "https://pzwiki.net/w/images/7/7d/FleshingTool.png" },
+  { "name": "Fishing Rod", "iconUrl": "https://pzwiki.net/w/images/2/2f/FishingRod.png" },
+  { "name": "Generator (Old)", "iconUrl": "https://pzwiki.net/w/images/3/38/Generator4.png" },
+  { "name": "Generator (Blue)", "iconUrl": "https://pzwiki.net/w/images/0/0a/Generator3.png" },
+  { "name": "Generator (Red)", "iconUrl": "https://pzwiki.net/w/images/c/c2/Generator.png" },
+  { "name": "Generator (Yellow)", "iconUrl": "https://pzwiki.net/w/images/5/57/Generator2.png" },
+  { "name": "Vehicle", "iconUrl": "https://pzwiki.net/w/images/b/b6/MagazineMechanic1.png" },
+  { "name": "Magazine: How to Use Generators", "iconUrl": "https://pzwiki.net/w/images/d/d6/MagazineElectronics02.png" }
+]

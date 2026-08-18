@@ -23,13 +23,13 @@ export function ImageGallery({ images, onUpload }: ImageGalleryProps) {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold text-slate-100">Photos</h2>
+      <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Photos</h2>
       <div className="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4">
         {images.map((src) => (
           <img key={src} src={src} alt="" className="aspect-square rounded object-cover" />
         ))}
       </div>
-      <label className="mt-3 inline-block cursor-pointer text-sm text-slate-400 hover:text-slate-200">
+      <label className="mt-3 inline-block cursor-pointer text-sm text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200">
         <input ref={inputRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
         {uploading ? 'Uploading...' : '+ Add a photo'}
       </label>

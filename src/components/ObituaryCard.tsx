@@ -16,9 +16,9 @@ export function ObituaryCard({ obituary }: ObituaryCardProps) {
   return (
     <Link
       to={`/${obituary.slug}`}
-      className="block overflow-hidden rounded-lg border border-slate-800 bg-slate-900 transition hover:border-slate-600"
+      className="block overflow-hidden rounded-lg border border-slate-200 bg-white transition hover:border-slate-400 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-600"
     >
-      <div className="aspect-video bg-slate-800">
+      <div className="aspect-video bg-slate-100 dark:bg-slate-800">
         {obituary.status === 'deceased' && !hasRealScreenshot(thumbnail ?? '') ? (
           <TombstonePlaceholder name={obituary.name} className="h-full w-full" />
         ) : (
@@ -26,7 +26,7 @@ export function ObituaryCard({ obituary }: ObituaryCardProps) {
         )}
       </div>
       <div className="p-3">
-        <h3 className="font-semibold text-slate-100">{obituary.name}</h3>
+        <h3 className="font-semibold text-slate-900 dark:text-slate-100">{obituary.name}</h3>
         {(obituary.gameMode || obituary.startingLocation) && (
           <p className="text-xs text-slate-500">
             {[obituary.gameMode, obituary.startingLocation].filter(Boolean).join(' · ')}
@@ -34,13 +34,13 @@ export function ObituaryCard({ obituary }: ObituaryCardProps) {
         )}
         {obituary.status === 'deceased' ? (
           <>
-            <p className="mt-1 truncate text-sm text-slate-400">{obituary.causeOfDeath}</p>
+            <p className="mt-1 truncate text-sm text-slate-500 dark:text-slate-400">{obituary.causeOfDeath}</p>
             <div className="mt-2">
               <DurationBadge duration={obituary.runLength} compact />
             </div>
           </>
         ) : (
-          <p className="mt-1 text-sm text-emerald-400">Still surviving...</p>
+          <p className="mt-1 text-sm text-emerald-600 dark:text-emerald-400">Still surviving...</p>
         )}
         {(obituary.goals.length > 0 || loggedPois > 0) && (
           <p className="mt-2 flex gap-3 text-xs text-slate-500">

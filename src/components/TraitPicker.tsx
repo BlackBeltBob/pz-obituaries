@@ -10,11 +10,13 @@ interface TraitPickerProps {
 const categoryStyles: Record<TraitCategory, { selected: string; unselected: string }> = {
   positive: {
     selected: 'border-emerald-500 bg-emerald-600 text-white',
-    unselected: 'border-emerald-800 bg-emerald-950/40 text-emerald-400 hover:border-emerald-600',
+    unselected:
+      'border-emerald-300 bg-emerald-50 text-emerald-700 hover:border-emerald-500 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-400 dark:hover:border-emerald-600',
   },
   negative: {
     selected: 'border-red-500 bg-red-600 text-white',
-    unselected: 'border-red-800 bg-red-950/40 text-red-400 hover:border-red-600',
+    unselected:
+      'border-red-300 bg-red-50 text-red-700 hover:border-red-500 dark:border-red-800 dark:bg-red-950/40 dark:text-red-400 dark:hover:border-red-600',
   },
 }
 
@@ -61,8 +63,8 @@ export function TraitPicker({ traits, onChange }: TraitPickerProps) {
   const legacyTraits = traits.filter((t) => !catalogNames.has(t))
 
   return (
-    <details className="group">
-      <summary className="flex cursor-pointer list-none items-center gap-2 text-lg font-semibold text-slate-100">
+    <details open className="group">
+      <summary className="flex cursor-pointer list-none items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
         <span className="inline-block text-slate-500 transition-transform group-open:rotate-90">›</span>
         Traits
         {traits.length > 0 && <span className="text-sm font-normal text-slate-500">({traits.length})</span>}
@@ -90,7 +92,7 @@ export function TraitPicker({ traits, onChange }: TraitPickerProps) {
                 type="button"
                 onClick={() => toggle(trait)}
                 title="Remove this trait"
-                className="rounded-full border border-dashed border-slate-600 px-3 py-1 text-sm text-slate-400 hover:border-red-500 hover:text-red-400"
+                className="rounded-full border border-dashed border-slate-400 px-3 py-1 text-sm text-slate-500 hover:border-red-500 hover:text-red-600 dark:border-slate-600 dark:text-slate-400 dark:hover:text-red-400"
               >
                 {trait} ✕
               </button>

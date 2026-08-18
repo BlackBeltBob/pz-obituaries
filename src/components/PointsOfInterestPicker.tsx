@@ -31,10 +31,22 @@ const STATUS_LABELS: Record<PoiStatus, string> = {
 }
 
 const STATUS_COLORS: Record<PoiStatus, { active: string; badge: string }> = {
-  unvisited: { active: 'bg-emerald-600 text-white', badge: 'bg-slate-800 text-slate-400' },
-  overrun: { active: 'bg-red-600 text-white', badge: 'bg-red-950 text-red-400' },
-  cleared: { active: 'bg-yellow-500 text-slate-900', badge: 'bg-yellow-950 text-yellow-400' },
-  looted: { active: 'bg-green-600 text-white', badge: 'bg-green-950 text-green-400' },
+  unvisited: {
+    active: 'bg-emerald-600 text-white',
+    badge: 'bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400',
+  },
+  overrun: {
+    active: 'bg-red-600 text-white',
+    badge: 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-400',
+  },
+  cleared: {
+    active: 'bg-yellow-500 text-slate-900',
+    badge: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-950 dark:text-yellow-400',
+  },
+  looted: {
+    active: 'bg-green-600 text-white',
+    badge: 'bg-green-100 text-green-700 dark:bg-green-950 dark:text-green-400',
+  },
 }
 
 function sortEntries(
@@ -50,12 +62,12 @@ function sortEntries(
   })
 }
 
-function StatusToggle({ status, onChange }: { status: PoiStatus; onChange: (status: PoiStatus) => void }) {
+export function StatusToggle({ status, onChange }: { status: PoiStatus; onChange: (status: PoiStatus) => void }) {
   return (
     <div
       role="group"
       aria-label="Status"
-      className="flex divide-x divide-slate-700 overflow-hidden rounded border border-slate-700"
+      className="flex divide-x divide-slate-300 overflow-hidden rounded border border-slate-300 dark:divide-slate-700 dark:border-slate-700"
     >
       {POI_STATUSES.map((option) => (
         <button
@@ -64,7 +76,9 @@ function StatusToggle({ status, onChange }: { status: PoiStatus; onChange: (stat
           aria-pressed={status === option}
           onClick={() => onChange(option)}
           className={`px-2 py-1 text-xs transition ${
-            status === option ? STATUS_COLORS[option].active : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+            status === option
+              ? STATUS_COLORS[option].active
+              : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
           }`}
         >
           {STATUS_LABELS[option]}
@@ -103,11 +117,11 @@ function JournalLog({
 
   return (
     <div>
-      <label className="text-sm text-slate-400">Notes</label>
+      <label className="text-sm text-slate-500 dark:text-slate-400">Notes</label>
       {entries.length > 0 && (
         <ul className="mt-1 space-y-1">
           {entries.map((entry) => (
-            <li key={entry.id} className="flex items-start gap-2 text-sm text-slate-300">
+            <li key={entry.id} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
               <span className="mt-0.5 shrink-0 text-xs text-slate-500">
                 {entry.day !== null ? `Day ${entry.day}` : new Date(entry.createdAt).toLocaleDateString()}
               </span>
@@ -115,7 +129,7 @@ function JournalLog({
               <button
                 type="button"
                 onClick={() => onRemove(entry.id)}
-                className="text-xs text-slate-500 hover:text-red-400"
+                className="text-xs text-slate-500 hover:text-red-600 dark:hover:text-red-400"
                 aria-label="Remove note"
               >
                 ✕
@@ -131,12 +145,12 @@ function JournalLog({
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && submit()}
           placeholder={currentDay !== null ? `Add a note for day ${currentDay}...` : 'Add a note...'}
-          className="flex-1 rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-200"
+          className="flex-1 rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
         />
         <button
           type="button"
           onClick={submit}
-          className="rounded bg-slate-700 px-3 py-1 text-sm text-slate-200 hover:bg-slate-600"
+          className="rounded bg-slate-200 px-3 py-1 text-sm text-slate-800 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
         >
           Add
         </button>
@@ -214,8 +228,8 @@ export function PointsOfInterestPicker({
   }
 
   return (
-    <details className="group">
-      <summary className="flex cursor-pointer list-none items-center gap-2 text-lg font-semibold text-slate-100">
+    <details open className="group">
+      <summary className="flex cursor-pointer list-none items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
         <span className="inline-block text-slate-500 transition-transform group-open:rotate-90">›</span>
         Points of Interest
         {poiNames.length > 0 && (
@@ -235,11 +249,11 @@ export function PointsOfInterestPicker({
           const entry = entryByName.get(name)
           const isCustom = !poiNames.includes(name)
           return (
-            <details key={name} className="group/poi rounded border border-slate-800">
-              <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 text-sm text-slate-200">
+            <details key={name} className="group/poi rounded border border-slate-200 dark:border-slate-800">
+              <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 text-sm text-slate-800 dark:text-slate-200">
                 <span className="inline-block text-slate-500 transition-transform group-open/poi:rotate-90">›</span>
                 {name}
-                <span className="rounded bg-slate-800 px-1.5 py-0.5 text-xs text-slate-400">
+                <span className="rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
                   {CATEGORY_LABELS[category]}
                 </span>
                 {isCustom && <span className="text-xs text-slate-500">(custom)</span>}
@@ -262,8 +276,8 @@ export function PointsOfInterestPicker({
                   📌
                 </button>
               </summary>
-              <div className="space-y-3 border-t border-slate-800 bg-slate-950/40 px-3 py-3">
-                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-300">
+              <div className="space-y-3 border-t border-slate-200 bg-slate-50/60 px-3 py-3 dark:border-slate-800 dark:bg-slate-950/40">
+                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
                   <StatusToggle
                     status={entry?.status ?? 'unvisited'}
                     onChange={(status) => updateEntry(name, { status })}
@@ -272,7 +286,7 @@ export function PointsOfInterestPicker({
                     <button
                       type="button"
                       onClick={() => removeCustomLocation(name)}
-                      className="ml-auto text-xs text-slate-500 hover:text-red-400"
+                      className="ml-auto text-xs text-slate-500 hover:text-red-600 dark:hover:text-red-400"
                     >
                       Remove location
                     </button>
@@ -297,12 +311,12 @@ export function PointsOfInterestPicker({
             onChange={(e) => setNewLocation(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && addCustomLocation()}
             placeholder="Add a location not on the list..."
-            className="flex-1 rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-200"
+            className="flex-1 rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
           />
           <button
             type="button"
             onClick={addCustomLocation}
-            className="rounded bg-slate-700 px-3 py-1 text-sm text-slate-200 hover:bg-slate-600"
+            className="rounded bg-slate-200 px-3 py-1 text-sm text-slate-800 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
           >
             Add
           </button>

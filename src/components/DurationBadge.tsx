@@ -16,7 +16,7 @@ export function DurationBadge({ duration, compact = false }: DurationBadgeProps)
     if (duration.months) parts.push(`${duration.months}m`)
     if (!duration.years && !duration.months) parts.push(`${duration.days}d`)
     return (
-      <span className="inline-flex items-center rounded-full bg-slate-800 px-2.5 py-0.5 text-xs font-medium text-slate-300">
+      <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
         {parts.join(' ') || '0d'}
       </span>
     )
@@ -34,5 +34,5 @@ export function DurationBadge({ duration, compact = false }: DurationBadgeProps)
     .map(([value, unit]) => pluralize(value, unit))
     .join(', ')
 
-  return <span className="text-slate-300">{text || 'Less than a minute'}</span>
+  return <span className="text-slate-600 dark:text-slate-300">{text || 'Less than a minute'}</span>
 }
