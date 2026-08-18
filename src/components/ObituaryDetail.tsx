@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import type { Obituary } from '../../shared/obituary'
-import { getObituaryBySlug, updateObituary, uploadImage } from '../lib/api'
+import { deleteObituary, getObituaryBySlug, updateObituary, uploadImage } from '../lib/api'
 import { hasRealScreenshot } from '../lib/screenshot'
 import { BasesPicker } from './BasesPicker'
 import { DeathForm } from './DeathForm'
@@ -75,8 +75,10 @@ function CurrentDayControl({
 
 export function ObituaryDetail() {
   const { slug } = useParams<{ slug: string }>()
+  const navigate = useNavigate()
   const [obituary, setObituary] = useState<Obituary | null | undefined>(null)
   const [showDeathForm, setShowDeathForm] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const [tab, setTab] = useState<Tab>('overview')
 
   useEffect(() => {
@@ -135,6 +137,18 @@ export function ObituaryDetail() {
     setObituary(updated)
   }
 
+  async function handleDelete() {
+    if (!confirm(`Permanently delete ${obituary!.name}? This cannot be undone.`)) return
+    setDeleting(true)
+    try {
+      await deleteObituary(slug!)
+      navigate('/')
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Failed to delete character')
+      setDeleting(false)
+    }
+  }
+
   return (
     <div className="mx-auto max-w-2xl p-6">
       <Link to="/" className="text-sm text-slate-400 hover:text-slate-200">
@@ -156,16 +170,27 @@ export function ObituaryDetail() {
             </p>
           )}
         </div>
-        {obituary.status === 'living' && (
+        <div className="flex gap-2">
+          {obituary.status === 'living' && (
+            <button
+              type="button"
+              onClick={() => setShowDeathForm(true)}
+              title="Record death"
+              className="rounded-full border border-slate-700 p-2 text-xl hover:border-red-600"
+            >
+              💀
+            </button>
+          )}
           <button
             type="button"
-            onClick={() => setShowDeathForm(true)}
-            title="Record death"
-            className="rounded-full border border-slate-700 p-2 text-xl hover:border-red-600"
+            onClick={handleDelete}
+            disabled={deleting}
+            title="Delete character"
+            className="rounded-full border border-slate-700 p-2 text-xl hover:border-red-600 disabled:opacity-50"
           >
-            💀
+            🗑️
           </button>
-        )}
+        </div>
       </div>
 
       <div className="mt-2 flex items-center gap-3">

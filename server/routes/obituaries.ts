@@ -68,6 +68,16 @@ router.put('/:slug', async (req, res) => {
   res.json(updated)
 })
 
+router.delete('/:slug', async (req, res) => {
+  const existing = await storage.getBySlug(req.params.slug)
+  if (!existing) {
+    res.status(404).json({ error: 'Not found' })
+    return
+  }
+  await storage.remove(req.params.slug)
+  res.status(204).end()
+})
+
 router.post('/:slug/death', async (req, res) => {
   const existing = await storage.getBySlug(req.params.slug)
   if (!existing) {

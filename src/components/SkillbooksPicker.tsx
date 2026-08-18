@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { SKILLBOOK_TIER_COUNT, type SkillbookEntry } from '../../shared/obituary'
-import { getSkillsCatalog } from '../lib/api'
+import { getSkillbooksCatalog } from '../lib/api'
 
 interface SkillbooksPickerProps {
   skillbooks: SkillbookEntry[]
@@ -13,7 +13,7 @@ export function SkillbooksPicker({ skillbooks, onChange }: SkillbooksPickerProps
   const [catalog, setCatalog] = useState<string[] | null>(null)
 
   useEffect(() => {
-    getSkillsCatalog().then(setCatalog)
+    getSkillbooksCatalog().then(setCatalog)
   }, [])
 
   if (!catalog) {

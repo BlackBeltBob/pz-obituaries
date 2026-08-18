@@ -3,6 +3,7 @@ import path from 'node:path'
 import type { JournalEntry, Obituary, PoiStatus } from '../shared/obituary'
 
 const DATA_DIR = path.resolve(import.meta.dirname, 'data/obituaries')
+const PHOTOS_DIR = path.resolve(import.meta.dirname, '../public/obituaries')
 
 export function slugify(name: string): string {
   return name
@@ -99,4 +100,11 @@ export async function uniqueSlug(name: string): Promise<string> {
 
 export async function save(obituary: Obituary): Promise<void> {
   await fs.writeFile(path.join(DATA_DIR, `${obituary.slug}.json`), JSON.stringify(obituary, null, 2))
+}
+
+export async function remove(slug: string): Promise<void> {
+  await fs.unlink(path.join(DATA_DIR, `${slug}.json`))
+  // Uploaded photos live outside DATA_DIR in a per-slug folder; not every
+  // character has one, so a missing folder here isn't an error.
+  await fs.rm(path.join(PHOTOS_DIR, slug), { recursive: true, force: true })
 }

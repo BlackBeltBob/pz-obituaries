@@ -6,6 +6,7 @@ import express from 'express'
 import obituariesRouter from './routes/obituaries'
 import occupationsRouter from './routes/occupations'
 import poisRouter from './routes/pois'
+import skillbooksRouter from './routes/skillbooks'
 import skillsRouter from './routes/skills'
 import traitsRouter from './routes/traits'
 
@@ -32,6 +33,7 @@ app.use('/api/traits', traitsRouter)
 app.use('/api/pois', poisRouter)
 app.use('/api/occupations', occupationsRouter)
 app.use('/api/skills', skillsRouter)
+app.use('/api/skillbooks', skillbooksRouter)
 
 if (isProduction) {
   const distDir = path.resolve(import.meta.dirname, '../dist')

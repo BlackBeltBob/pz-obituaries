@@ -47,6 +47,14 @@ export async function updateObituary(slug: string, input: UpdateObituaryInput): 
   )
 }
 
+export async function deleteObituary(slug: string): Promise<void> {
+  const res = await fetch(`${BASE_URL}/${slug}`, { method: 'DELETE' })
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({ error: res.statusText }))
+    throw new Error(body.error ?? `Request failed with ${res.status}`)
+  }
+}
+
 export async function submitDeath(slug: string, input: SubmitDeathInput): Promise<Obituary> {
   return parseOrThrow(
     await fetch(`${BASE_URL}/${slug}/death`, {
@@ -82,4 +90,8 @@ export async function getOccupationsCatalog(): Promise<string[]> {
 
 export async function getSkillsCatalog(): Promise<string[]> {
   return parseOrThrow(await fetch('/api/skills'))
+}
+
+export async function getSkillbooksCatalog(): Promise<string[]> {
+  return parseOrThrow(await fetch('/api/skillbooks'))
 }
