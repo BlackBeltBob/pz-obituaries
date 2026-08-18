@@ -9,6 +9,7 @@ import { DurationBadge } from './DurationBadge'
 import { EditableGoals } from './EditableGoals'
 import { EditableMoments } from './EditableMoments'
 import { ImageGallery } from './ImageGallery'
+import { KeyItemsTracker } from './KeyItemsTracker'
 import { PointsOfInterestPicker } from './PointsOfInterestPicker'
 import { RoutinesList } from './RoutinesList'
 import { SkillbooksPicker } from './SkillbooksPicker'
@@ -114,6 +115,7 @@ export function ObituaryDetail() {
         | 'currentDay'
         | 'bases'
         | 'selectedBaseId'
+        | 'items'
       >
     >,
   ) {
@@ -128,6 +130,7 @@ export function ObituaryDetail() {
       currentDay: 'currentDay' in partial ? partial.currentDay! : obituary!.currentDay,
       bases: partial.bases ?? obituary!.bases,
       selectedBaseId: 'selectedBaseId' in partial ? partial.selectedBaseId! : obituary!.selectedBaseId,
+      items: partial.items ?? obituary!.items,
     })
     setObituary(updated)
   }
@@ -246,6 +249,7 @@ export function ObituaryDetail() {
               selectedBaseId={obituary.selectedBaseId}
               onChange={(update) => persist(update)}
             />
+            <KeyItemsTracker items={obituary.items} onChange={(items) => persist({ items })} />
           </div>
         )}
 

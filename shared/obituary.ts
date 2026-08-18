@@ -55,6 +55,16 @@ export interface TraitDefinition {
   category: TraitCategory
 }
 
+export interface CharacterItem {
+  name: string
+  quantity: number
+}
+
+export interface ItemDefinition {
+  name: string
+  iconUrl: string
+}
+
 // Standard playstyles plus the still-common legacy ones, per
 // https://pzwiki.net/wiki/Game_modes
 export const GAME_MODES = [
@@ -134,6 +144,7 @@ interface ObituaryBase {
   pointsOfInterest: PointOfInterestEntry[]
   bases: Base[]
   selectedBaseId: string | null
+  items: CharacterItem[]
 }
 
 export interface LivingObituary extends ObituaryBase {
@@ -172,6 +183,7 @@ export interface UpdateObituaryInput {
   currentDay: number | null
   bases: Base[]
   selectedBaseId: string | null
+  items: CharacterItem[]
 }
 
 export interface SubmitDeathInput {

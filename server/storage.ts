@@ -57,6 +57,7 @@ function normalize(raw: unknown): Obituary {
     routines: obituary.routines ?? [],
     bases: obituary.bases ?? [],
     selectedBaseId: obituary.selectedBaseId ?? null,
+    items: obituary.items ?? [],
     pointsOfInterest: (obituary.pointsOfInterest ?? []).map((poi) => ({
       name: poi.name,
       goals: poi.goals ?? [],

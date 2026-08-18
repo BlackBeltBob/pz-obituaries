@@ -3,6 +3,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import cors from 'cors'
 import express from 'express'
+import itemsRouter from './routes/items'
 import obituariesRouter from './routes/obituaries'
 import occupationsRouter from './routes/occupations'
 import poisRouter from './routes/pois'
@@ -34,6 +35,7 @@ app.use('/api/pois', poisRouter)
 app.use('/api/occupations', occupationsRouter)
 app.use('/api/skills', skillsRouter)
 app.use('/api/skillbooks', skillbooksRouter)
+app.use('/api/items', itemsRouter)
 
 if (isProduction) {
   const distDir = path.resolve(import.meta.dirname, '../dist')

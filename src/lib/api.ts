@@ -1,5 +1,6 @@
 import type {
   CreateObituaryInput,
+  ItemDefinition,
   Obituary,
   PoiCatalogEntry,
   SubmitDeathInput,
@@ -78,6 +79,10 @@ export async function uploadImage(slug: string, file: File): Promise<Obituary> {
 
 export async function getTraitsCatalog(): Promise<TraitDefinition[]> {
   return parseOrThrow(await fetch('/api/traits'))
+}
+
+export async function getItemsCatalog(): Promise<ItemDefinition[]> {
+  return parseOrThrow(await fetch('/api/items'))
 }
 
 export async function getPoisCatalog(): Promise<Record<string, PoiCatalogEntry[]>> {

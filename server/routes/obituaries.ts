@@ -38,6 +38,7 @@ router.post('/', async (req, res) => {
     selectedBaseId: null,
     images: [],
     pointsOfInterest: [],
+    items: [],
     status: 'living',
   }
   await storage.save(obituary)
@@ -63,6 +64,7 @@ router.put('/:slug', async (req, res) => {
     currentDay: input.currentDay,
     bases: input.bases,
     selectedBaseId: input.selectedBaseId,
+    items: input.items,
   }
   await storage.save(updated)
   res.json(updated)
