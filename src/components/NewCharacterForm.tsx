@@ -117,7 +117,7 @@ export function NewCharacterForm({ onClose, onCreated }: NewCharacterFormProps) 
           </div>
 
           <div className="rounded border border-slate-300 px-3 py-2 dark:border-slate-700">
-            <TraitPicker traits={traits} onChange={setTraits} />
+            <TraitPicker traits={traits} onChange={setTraits} variant="inline" />
           </div>
 
           {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}

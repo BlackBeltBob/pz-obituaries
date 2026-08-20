@@ -7,6 +7,7 @@ import {
   type PoiStatus,
   type PointOfInterestEntry,
 } from '../../shared/obituary'
+import { useIsDesktop } from '../hooks/useIsDesktop'
 import { getPoisCatalog } from '../lib/api'
 import { EditableGoals } from './EditableGoals'
 
@@ -167,6 +168,7 @@ export function PointsOfInterestPicker({
 }: PointsOfInterestPickerProps) {
   const [catalog, setCatalog] = useState<Record<string, PoiCatalogEntry[]> | null>(null)
   const [newLocation, setNewLocation] = useState('')
+  const isDesktop = useIsDesktop()
 
   useEffect(() => {
     getPoisCatalog().then(setCatalog)
@@ -227,101 +229,119 @@ export function PointsOfInterestPicker({
     onChange(pointsOfInterest.filter((p) => p.name !== name))
   }
 
+  const header = (
+    <>
+      Points of Interest
+      {poiNames.length > 0 && (
+        <span className="text-sm font-normal text-slate-500">
+          ({filledCount}/{poiNames.length})
+        </span>
+      )}
+    </>
+  )
+
+  const body = (
+    <div className="mt-2 space-y-2">
+      {allEntries.length === 0 && (
+        <p className="text-sm text-slate-500">
+          No known points of interest for {startingLocation || 'this location'}.
+        </p>
+      )}
+      {allEntries.map(({ name, category }) => {
+          const entry = entryByName.get(name)
+          const isCustom = !poiNames.includes(name)
+        return (
+          <details key={name} className="group/poi rounded border border-slate-200 dark:border-slate-800">
+            <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 text-sm text-slate-800 dark:text-slate-200">
+              <span className="inline-block text-slate-500 transition-transform group-open/poi:rotate-90">›</span>
+              {name}
+              <span className="rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
+                {CATEGORY_LABELS[category]}
+              </span>
+              {isCustom && <span className="text-xs text-slate-500">(custom)</span>}
+              <span className={`ml-auto rounded px-1.5 py-0.5 text-xs ${STATUS_COLORS[entry?.status ?? 'unvisited'].badge}`}>
+                {STATUS_LABELS[entry?.status ?? 'unvisited']}
+              </span>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  updateEntry(name, { pinned: !(entry?.pinned ?? false) })
+                }}
+                aria-pressed={entry?.pinned ?? false}
+                aria-label={entry?.pinned ? 'Unpin' : 'Pin to top'}
+                className={`shrink-0 leading-none transition-opacity ${
+                  entry?.pinned ? 'opacity-100' : 'opacity-50 hover:opacity-90'
+                }`}
+              >
+                📌
+              </button>
+            </summary>
+            <div className="space-y-3 border-t border-slate-200 bg-slate-50/60 px-3 py-3 dark:border-slate-800 dark:bg-slate-950/40">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
+                <StatusToggle
+                  status={entry?.status ?? 'unvisited'}
+                  onChange={(status) => updateEntry(name, { status })}
+                />
+                {isCustom && (
+                  <button
+                    type="button"
+                    onClick={() => removeCustomLocation(name)}
+                    className="ml-auto text-xs text-slate-500 hover:text-red-600 dark:hover:text-red-400"
+                  >
+                    Remove location
+                  </button>
+                )}
+              </div>
+              <JournalLog
+                entries={entry?.notes ?? []}
+                currentDay={currentDay}
+                onAdd={(text) => addNote(name, text)}
+                onRemove={(id) => removeNote(name, id)}
+              />
+              <EditableGoals goals={entry?.goals ?? []} onChange={(goals) => updateEntry(name, { goals })} />
+            </div>
+          </details>
+        )
+      })}
+
+      <div className="flex gap-2 pt-1">
+        <input
+          type="text"
+          value={newLocation}
+          onChange={(e) => setNewLocation(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && addCustomLocation()}
+          placeholder="Add a location not on the list..."
+          className="flex-1 rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+        />
+        <button
+          type="button"
+          onClick={addCustomLocation}
+          className="rounded bg-slate-200 px-3 py-1 text-sm text-slate-800 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  )
+
+  if (isDesktop) {
+    return (
+      <div>
+        <div className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100">{header}</div>
+        {body}
+      </div>
+    )
+  }
+
   return (
     <details open className="group">
       <summary className="flex cursor-pointer list-none items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
         <span className="inline-block text-slate-500 transition-transform group-open:rotate-90">›</span>
-        Points of Interest
-        {poiNames.length > 0 && (
-          <span className="text-sm font-normal text-slate-500">
-            ({filledCount}/{poiNames.length})
-          </span>
-        )}
+        {header}
       </summary>
-
-      <div className="mt-2 space-y-2">
-        {allEntries.length === 0 && (
-          <p className="text-sm text-slate-500">
-            No known points of interest for {startingLocation || 'this location'}.
-          </p>
-        )}
-        {allEntries.map(({ name, category }) => {
-          const entry = entryByName.get(name)
-          const isCustom = !poiNames.includes(name)
-          return (
-            <details key={name} className="group/poi rounded border border-slate-200 dark:border-slate-800">
-              <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-2 text-sm text-slate-800 dark:text-slate-200">
-                <span className="inline-block text-slate-500 transition-transform group-open/poi:rotate-90">›</span>
-                {name}
-                <span className="rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">
-                  {CATEGORY_LABELS[category]}
-                </span>
-                {isCustom && <span className="text-xs text-slate-500">(custom)</span>}
-                <span className={`ml-auto rounded px-1.5 py-0.5 text-xs ${STATUS_COLORS[entry?.status ?? 'unvisited'].badge}`}>
-                  {STATUS_LABELS[entry?.status ?? 'unvisited']}
-                </span>
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    e.stopPropagation()
-                    updateEntry(name, { pinned: !(entry?.pinned ?? false) })
-                  }}
-                  aria-pressed={entry?.pinned ?? false}
-                  aria-label={entry?.pinned ? 'Unpin' : 'Pin to top'}
-                  className={`shrink-0 leading-none transition-opacity ${
-                    entry?.pinned ? 'opacity-100' : 'opacity-50 hover:opacity-90'
-                  }`}
-                >
-                  📌
-                </button>
-              </summary>
-              <div className="space-y-3 border-t border-slate-200 bg-slate-50/60 px-3 py-3 dark:border-slate-800 dark:bg-slate-950/40">
-                <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
-                  <StatusToggle
-                    status={entry?.status ?? 'unvisited'}
-                    onChange={(status) => updateEntry(name, { status })}
-                  />
-                  {isCustom && (
-                    <button
-                      type="button"
-                      onClick={() => removeCustomLocation(name)}
-                      className="ml-auto text-xs text-slate-500 hover:text-red-600 dark:hover:text-red-400"
-                    >
-                      Remove location
-                    </button>
-                  )}
-                </div>
-                <JournalLog
-                  entries={entry?.notes ?? []}
-                  currentDay={currentDay}
-                  onAdd={(text) => addNote(name, text)}
-                  onRemove={(id) => removeNote(name, id)}
-                />
-                <EditableGoals goals={entry?.goals ?? []} onChange={(goals) => updateEntry(name, { goals })} />
-              </div>
-            </details>
-          )
-        })}
-
-        <div className="flex gap-2 pt-1">
-          <input
-            type="text"
-            value={newLocation}
-            onChange={(e) => setNewLocation(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && addCustomLocation()}
-            placeholder="Add a location not on the list..."
-            className="flex-1 rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-800 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
-          />
-          <button
-            type="button"
-            onClick={addCustomLocation}
-            className="rounded bg-slate-200 px-3 py-1 text-sm text-slate-800 hover:bg-slate-300 dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600"
-          >
-            Add
-          </button>
-        </div>
-      </div>
+      {body}
     </details>
   )
 }

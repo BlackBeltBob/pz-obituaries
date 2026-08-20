@@ -18,12 +18,13 @@ export interface DashboardViewProps {
   handleUpload: (file: File) => Promise<void>
 }
 
-// Desktop (lg+): full flex-wrap layout, everything visible and expanded.
-// Traits is pinned full-width and last via `lg:order-last lg:basis-full` --
-// it stays in its normal (first, narrow) tablet position, since only
-// Memorable Moments/Photos were confirmed as tablet-demoted; the reorder
-// and full-width treatment only kicks in at lg+, where a long trait list
-// otherwise makes for a very tall narrow column instead of a few wide rows.
+// Desktop (lg+): full flex-wrap layout. Cards stay permanently expanded at
+// this width (see SummaryCard/PointsOfInterestPicker's useIsDesktop check)
+// -- collapse remains available below lg, where space is tighter. Traits
+// stays compact at every width (see TraitPicker) since it only ever shows
+// the selected traits, with the full catalog moved into its own modal, so
+// it no longer needs the full-width/reordered treatment a huge inline
+// catalog used to require.
 //
 // Tablet (md, <lg): Key Items breaks out into its own side column via the
 // md:flex/lg:contents wrapper below; Memorable Moments and Photos are last
@@ -44,7 +45,7 @@ export function DashboardView({ obituary, persist, handleUpload }: DashboardView
   return (
     <div className="mt-6 md:flex md:items-start md:gap-4 lg:block">
       <div className="flex flex-1 flex-wrap items-start gap-3 lg:gap-4">
-        <PlainCard className="flex-1 shrink-0 basis-72 lg:order-last lg:basis-full">
+        <PlainCard className="flex-1 shrink-0 basis-72">
           <TraitPicker traits={obituary.traits} onChange={(traits) => persist({ traits })} />
         </PlainCard>
 
@@ -61,12 +62,13 @@ export function DashboardView({ obituary, persist, handleUpload }: DashboardView
           <EditableGoals goals={obituary.goals} onChange={(goals) => persist({ goals })} />
         </SummaryCard>
 
-        <SummaryCard title="Skills" count={`${obituary.skills.length}`} className="flex-1 shrink-0 basis-[440px]">
-          <SkillsPicker skills={obituary.skills} onChange={(skills) => persist({ skills })} />
-        </SummaryCard>
-
-        <SummaryCard title="Skill Books" count={`${obituary.skillbooks.length}`} className="flex-1 shrink-0 basis-[480px]">
-          <SkillbooksPicker skillbooks={obituary.skillbooks} onChange={(skillbooks) => persist({ skillbooks })} />
+        <SummaryCard title="Skills & Skill Books" className="flex-1 shrink-0 basis-[480px]">
+          <div className="space-y-4">
+            <SkillsPicker skills={obituary.skills} onChange={(skills) => persist({ skills })} />
+            <div className="border-t border-slate-200 pt-4 dark:border-slate-800">
+              <SkillbooksPicker skillbooks={obituary.skillbooks} onChange={(skillbooks) => persist({ skillbooks })} />
+            </div>
+          </div>
         </SummaryCard>
 
         <SummaryCard title="Bases" count={`${obituary.bases.length}`} className="flex-1 shrink-0 basis-[460px]">

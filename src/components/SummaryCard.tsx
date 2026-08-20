@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useIsDesktop } from '../hooks/useIsDesktop'
 
 interface SummaryCardProps {
   title: string
@@ -22,15 +23,32 @@ interface SummaryCardProps {
 // narrow card at desktop width still has a wide viewport, so `sm:` variants
 // fired regardless of how little room the card itself had.
 export function SummaryCard({ title, count, children, defaultOpen = true, className = '' }: SummaryCardProps) {
+  const isDesktop = useIsDesktop()
+  const cardClass = `@container h-fit rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900 ${className}`
+  const header = (
+    <>
+      {title}
+      {count !== undefined && <span className="text-sm font-normal text-slate-500">({count})</span>}
+    </>
+  )
+
+  // Desktop has room for every card to just stay open -- collapsing them
+  // there hides content behind an extra click for no space benefit. Tablet
+  // is tighter, so collapse stays available there.
+  if (isDesktop) {
+    return (
+      <div className={cardClass}>
+        <div className="flex items-center gap-2 text-base font-semibold text-slate-900 dark:text-slate-100">{header}</div>
+        <div className="mt-3">{children}</div>
+      </div>
+    )
+  }
+
   return (
-    <details
-      open={defaultOpen}
-      className={`group @container h-fit rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900 ${className}`}
-    >
+    <details open={defaultOpen} className={`group ${cardClass}`}>
       <summary className="flex cursor-pointer list-none items-center gap-2 text-base font-semibold text-slate-900 dark:text-slate-100">
         <span className="inline-block text-slate-500 transition-transform group-open:rotate-90">›</span>
-        {title}
-        {count !== undefined && <span className="text-sm font-normal text-slate-500">({count})</span>}
+        {header}
       </summary>
       <div className="mt-3">{children}</div>
     </details>
